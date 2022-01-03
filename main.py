@@ -1,6 +1,8 @@
 import discord
 import hashlib
 
+#format for dictionary works as the following: word: (chaotic-lawful) (evil-good)
+
 botID = open("token.txt", "r")
 
 TOKEN = botID.read()
