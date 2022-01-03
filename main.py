@@ -7,26 +7,47 @@ TOKEN = botID.read()
 
 client = discord.Client()
 
-#On start up
+
 @client.event
 async def on_ready():
-   print("Bot turned on")
+    print("Bot turned on")
 
-#When each message plays
+
+# When each message plays
 @client.event
 async def on_message(message):
-   #ensures bot does not read itself
-   if message.author == client.user:
-      return
+    # ensures bot does not read itself
+    if message.author == client.user:
+        return
+    # Takes Discord account info and message content
+    username = str(message.author)
+    usernameID = str(message.author.id)
+    user_message = str(message.content)
+    channel = str(message.channel.name)
+    print(f'{username} {usernameID}: {user_message} ({channel})')
+    alignment = int(str(abs(hash(str(usernameID))))[0])
+    if alignment == 1:
+        alignment_text = "lawful good"
+    elif alignment == 2:
+        alignment_text = "lawful neutral"
+    elif alignment == 3:
+        alignment_text = "lawful evil"
+    elif alignment == 4:
+        alignment_text = "neutral good"
+    elif alignment == 5:
+        alignment_text = "true neutral"
+    elif alignment == 6:
+        alignment_text = "neutral evil"
+    elif alignment == 7:
+        alignment_text = "chaotic good"
+    elif alignment == 8:
+        alignment_text = "chaotic neutral"
+    elif alignment == 9:
+        alignment_text = "chaotic evil"
+    else:
+        alignment_text = "true neutral"
+    await message.channel.send(f"You are {alignment_text}.")
 
-   #Takes Discord account info and message content
-   username = str(message.author)
-   usernameID = str(message.author.id)
-   user_message = str(message.content)
-   channel = str(message.channel.name)
-   print(f'{username} {usernameID}: {user_message} ({channel})')
-
-   
 
 botID.close()
 
