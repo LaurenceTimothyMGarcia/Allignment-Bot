@@ -7,11 +7,19 @@ TOKEN = botID.read()
 
 client = discord.Client()
 
+#On start up
 @client.event
 async def on_ready():
    print("Bot turned on")
 
-
+#When each message plays
+@client.event
+async def on_message(message):
+   username = str(message.author)
+   usernameID = str(message.author.id)
+   user_message = str(message.content)
+   channel = str(message.channel.name)
+   print(f'{username} {usernameID}: {user_message} ({channel})')
 
 botID.close()
 
