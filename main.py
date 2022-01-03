@@ -1,5 +1,5 @@
 import discord
-import random
+import hashlib
 
 botID = open("token.txt", "r")
 
@@ -25,7 +25,8 @@ async def on_message(message):
     user_message = str(message.content)
     channel = str(message.channel.name)
     print(f'{username} {usernameID}: {user_message} ({channel})')
-    alignment = int(str(abs(hash(str(usernameID))))[0])
+    hash_res = int(hashlib.sha256(bytes("salt " + usernameID, 'utf-8')).hexdigest(), 16)
+    alignment = int(str(abs(hash_res))[0])
     if alignment == 1:
         alignment_text = "lawful good"
     elif alignment == 2:
