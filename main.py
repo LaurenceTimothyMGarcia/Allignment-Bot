@@ -1,11 +1,14 @@
 import discord
 import hashlib
+import json
 
 #format for dictionary works as the following: word: (chaotic-lawful) (evil-good)
 
 botID = open("token.txt", "r")
 
 TOKEN = botID.read()
+with open('allignDict.json', 'r') as f:
+    align = json.load(f)
 
 client = discord.Client()
 
@@ -27,7 +30,7 @@ async def on_message(message):
     user_message = str(message.content)
     channel = str(message.channel.name)
     print(f'{username} {usernameID}: {user_message} ({channel})')
-    if message.content.lower().startswith("alignment"):
+    if message.content.lower().startswith("!alignment"):
         hash_res = int(hashlib.sha256(bytes("salt " + usernameID, 'utf-8')).hexdigest(), 16)
         alignment = int(str(abs(hash_res))[0])
         if alignment == 1:
@@ -51,6 +54,20 @@ async def on_message(message):
         else:
             alignment_text = "true neutral"
         await message.channel.send(f"You are {alignment_text}.")
+    elif message.content.lower().startswith("!history"):
+        await message.channel.trigger_typing()
+        messages = []
+        async for my_message in message.channel.history(limit=None).filter(
+                lambda x:
+                x.author.id == message.author.id and not x.content.lower().startswith("!alignment")
+                and not x.content.lower().startswith("!history")
+        ):
+            messages.append(my_message)
+            if len(messages) > 100:
+                break
+        # print([msg.content for msg in messages])
+        # print(len(messages))
+        await message.channel.send(len(messages))
 
 
 botID.close()
