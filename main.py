@@ -28,6 +28,7 @@ async def on_message(message):
     user_message = str(message.content)
     channel = str(message.channel.name)
     print(f'{username} {usernameID}: {user_message} ({channel})')
+    '''
     if message.content.lower().startswith("!alignment"):
         hash_res = int(hashlib.sha256(bytes("salt " + usernameID, 'utf-8')).hexdigest(), 16)
         alignment = int(str(abs(hash_res))[0])
@@ -52,7 +53,8 @@ async def on_message(message):
         else:
             alignment_text = "true neutral"
         await message.channel.send(f"You are {alignment_text}.")
-    elif message.content.lower().startswith("!history"):
+    '''
+    if message.content.lower().startswith("!history"):
         await message.channel.trigger_typing()
         messages = []
         async for my_message in message.channel.history(limit=None).filter(
