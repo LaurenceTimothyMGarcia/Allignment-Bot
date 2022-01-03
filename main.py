@@ -1,15 +1,13 @@
 import discord
 import hashlib
 import json
+from calcAllign import calculate_alignment
 
 #format for dictionary works as the following: word: (chaotic-lawful) (evil-good)
 
 botID = open("token.txt", "r")
 
 TOKEN = botID.read()
-with open('allignDict.json', 'r') as f:
-    align = json.load(f)
-
 client = discord.Client()
 
 
@@ -67,7 +65,7 @@ async def on_message(message):
                 break
         # print([msg.content for msg in messages])
         # print(len(messages))
-        await message.channel.send(len(messages))
+        await message.channel.send(calculate_alignment([msg.content for msg in messages]))
 
 
 botID.close()
