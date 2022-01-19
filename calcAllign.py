@@ -27,17 +27,17 @@ def calculate_alignment(messages):
     print(total_E_G)
 
     alignment_values = [0, 0]
-    if total_C_L < -10:
+    if total_C_L < -5:
         alignment_values[0] = -1
-    elif -10 <= total_C_L <= 10:
+    elif -5 <= total_C_L <= 5:
         alignment_values[0] = 0
-    elif 10 < total_C_L:
+    elif 5 < total_C_L:
         alignment_values[0] = 1
-    if total_E_G < -10:
+    if total_E_G < -5:
         alignment_values[1] = -1
-    elif -10 <= total_E_G <= 10:
+    elif -5 <= total_E_G <= 5:
         alignment_values[1] = 0
-    elif 10 < total_E_G:
+    elif 5 < total_E_G:
         alignment_values[1] = 1
 
     alignment = alignment_values

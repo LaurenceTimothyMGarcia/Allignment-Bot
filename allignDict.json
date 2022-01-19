@@ -26,5 +26,6 @@
     "rip": [20, 0],
     "lets go": [-20, 15],
     "grade": [30, 30],
-    "emergency player": [-25, -25]
+    "emergency player": [-25, -25],
+    "cum": [-30, -30]
 }
