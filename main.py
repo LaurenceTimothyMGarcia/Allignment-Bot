@@ -5,7 +5,7 @@ from calcAllign import calculate_alignment
 
 #format for dictionary works as the following: word: (chaotic-lawful) (evil-good)
 
-botID = open("token.txt", "r")
+botID = open("ignore_files\\token.txt", "r")
 
 TOKEN = botID.read()
 client = discord.Client()

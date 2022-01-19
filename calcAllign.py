@@ -2,7 +2,7 @@
 
 import json
 
-with open('allignDict.json', 'r') as f:
+with open('ignore_files\\allignDict.json', 'r') as f:
     align = json.load(f)
 
 

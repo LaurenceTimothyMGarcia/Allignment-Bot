@@ -1,2 +1,2 @@
-token.txt
-allignDict.json
+ignore_files/
+__pycache__/
