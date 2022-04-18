@@ -1,4 +1,4 @@
-Discord DND Alignment Bot
+# Discord DND Alignment Bot
 
 A Python based Discord bot constructed by Sebastian Clancy and Laurence Timothy Garcia.
 
